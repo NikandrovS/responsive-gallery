@@ -1,0 +1,58 @@
+#mySpinner {
+  display: flex;
+  justify-content: center; }
+
+.container {
+  max-width: 860px;
+  min-width: 320px;
+  margin: 0 15%; }
+  .container img:hover {
+    opacity: 0.2; }
+  .container_onLoad {
+    opacity: 0; }
+  .container_full {
+    border: 2px dashed #ccc; }
+    .container_full.highlight {
+      border-color: purple; }
+  .container__row_resized {
+    display: flex;
+    justify-content: space-between; }
+  .container__row:last-child:not(.container__row_resized) img {
+    margin-right: 5px; }
+  .container__row:not(:last-child) {
+    margin-bottom: 5px; }
+
+.lds-facebook {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px; }
+  .lds-facebook div {
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    width: 16px;
+    background: #aaa2ea;
+    animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite; }
+    .lds-facebook div:nth-child(1) {
+      left: 8px;
+      animation-delay: -0.24s; }
+    .lds-facebook div:nth-child(2) {
+      left: 32px;
+      animation-delay: -0.12s; }
+    .lds-facebook div:nth-child(3) {
+      left: 56px;
+      animation-delay: 0; }
+
+@keyframes lds-facebook {
+  0% {
+    top: 8px;
+    height: 64px; }
+  50%, 100% {
+    top: 24px;
+    height: 32px; } }
+@media only screen and (max-width: 500px) {
+  .container {
+    margin: 0 auto; } }
+
+/*# sourceMappingURL=style.css.map */

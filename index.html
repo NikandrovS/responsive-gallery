@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>Image gallery</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="stylesheet" href="style/scss/style.css">
+</head>
+
+<body>
+<div class="description">
+    <p>Frontend developer test task by <a href="mailto:mlforspm@gmail.com">Sergey Nikandrov</a></p>
+    <p><i>Responsive image gallery</i></p>
+    <ul>
+        <li>Insert link into input and press <b>Add</b> button</li>
+        <li>Upload multiple files via attaching *.json file</li>
+        <li>You can drag and drop images onto the dashed region</li>
+        <li>Remove images by clicking on them</li>
+    </ul>
+</div>
+<div class="input-block">
+    <input id="input" type="text"> <button id="downloadBtn">Add</button>
+    <br>
+    <br>
+    <input type="file" accept="application/json" id="upload">
+    <hr>
+</div>
+
+<div class="container" id="container" onchange="handleFiles(this.files)">
+    <div class="container__row"></div>
+</div>
+
+<script src="./js/index.js"></script>
+</body>
+
+</html>
