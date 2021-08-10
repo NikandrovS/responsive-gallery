@@ -13,12 +13,10 @@ function ready() {
 
         const img = new Image()
         img.src = input
-        row.prepend(img)
+        row.prepend(img, row)
 
         img.onclick = function () {
-            this.remove()
-            resize(row)
-            checkRowsSizes()
+            remover(this)
         }
         img.onerror = function () {
             img.src = './img/default-image.jpg'
@@ -34,6 +32,17 @@ function ready() {
     window.addEventListener("resize", () => {
         checkRowsSizes()
     })
+}
+
+function remover(image) {
+    const parent = image.parentNode
+    image.remove()
+    if (parent.childElementCount) {
+        resize(parent)
+        checkRowsSizes()
+    } else {
+        parent.remove()
+    }
 }
 
 function containerContain(row) {
@@ -69,11 +78,6 @@ function resize(row) {
         let previousRowHeight = row.previousSibling.offsetHeight
 
         for (let i = 0; i < childrenCount; i++) {
-            // const orientation = children[i].offsetWidth / children[i].offsetHeight
-            // if (childrenCount === 1 && orientation > 1) {
-            //     children[i].style.width = `100%`
-            //     continue
-            // }
             children[i].style.removeProperty('width')
             children[i].style.height = `${ previousRowHeight }px`
         }
@@ -277,9 +281,7 @@ function onReaderLoad(event) {
 
             img.src = obj.galleryImages[i].url
             img.onclick = function () {
-                this.remove()
-                resize(div)
-                checkRowsSizes()
+                remover(this)
             }
             div.append(img)
         }
@@ -323,6 +325,7 @@ function onReaderLoad(event) {
     }
 }
 
+//drag & drop
 function handleDrop(e) {
     let dt = e.dataTransfer
     let files = dt.files
@@ -370,9 +373,7 @@ function uploadFile(file) {
         img.classList.add('container_onLoad')
         img.src = reader.result
         img.onclick = function () {
-            this.remove()
-            resize(row)
-            checkRowsSizes()
+            remover(this)
         }
 
         setTimeout(() => {
@@ -384,6 +385,5 @@ function uploadFile(file) {
         containerContain(row)
     }
 }
-
 
 document.addEventListener("DOMContentLoaded", ready)
