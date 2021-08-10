@@ -13,7 +13,7 @@ function ready() {
 
         const img = new Image()
         img.src = input
-        row.prepend(img, row)
+        row.prepend(img)
 
         img.onclick = function () {
             remover(this)
